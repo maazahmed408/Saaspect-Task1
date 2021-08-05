@@ -3,7 +3,7 @@ import Posts from "./Posts";
 import Pagination from "./Pagination";
 
 import { connect } from "react-redux";
-import { setLoading, setCurrentPage, getPosts } from "../redux/action/action";
+import { setCurrentPage, getPosts } from "../redux/action/action";
 
 const BlogPage = ({ setCurrentPage, blogState, getPosts, postsState }) => {
 	const { currentPage, postsPerPage } = blogState;
@@ -43,10 +43,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 	getPosts: () => {
 		dispatch(getPosts());
-	},
-
-	setLoading: (value) => {
-		dispatch(setLoading(value));
 	},
 	setCurrentPage: (pageNumber) => {
 		dispatch(setCurrentPage(pageNumber));

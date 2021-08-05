@@ -1,8 +1,6 @@
 import {
 	SET_CURRENT_PAGE,
-	SET_LOADING,
 	GET_POSTS_REQUESTED,
-	SET_POST,
 	SET_COMMENTS,
 	GET_USERS_REQUESTED,
 	GET_POST_DETAIL,
@@ -25,15 +23,7 @@ export const setCurrentPage = (pageNumber) => ({
 	type: SET_CURRENT_PAGE,
 	payload: pageNumber,
 });
-export const setLoading = (value) => ({
-	type: SET_LOADING,
-	payload: value,
-});
 
-export const setPost = (post) => ({
-	type: SET_POST,
-	payload: post,
-});
 export const setComments = (comments) => ({
 	type: SET_COMMENTS,
 	payload: comments,
