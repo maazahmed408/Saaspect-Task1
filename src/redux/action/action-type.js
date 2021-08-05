@@ -1,0 +1,11 @@
+export const GET_POSTS_REQUESTED = "GET_POSTS_REQUESTED";
+
+export const GET_USERS_REQUESTED = "GET_USERS_REQUESTED";
+
+export const SET_POST = "SET_POST";
+
+export const SET_LOADING = "SET_LOADING";
+
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+
+export const SET_COMMENTS = "SET_COMMENTS";
