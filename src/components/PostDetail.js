@@ -1,32 +1,24 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { setComments, getPostDetail } from "../redux/action/action";
+import { getComments, getPostDetail } from "../redux/action/action";
 
-const PostDetail = ({ state, postDetailState, setComments, getPostDetail }) => {
+const PostDetail = ({ state, postDetailState, getComments, getPostDetail }) => {
 	const { comments } = state;
 	const { postId } = useParams();
 	const { post, loading } = postDetailState;
 
 	useEffect(() => {
 		getPostDetail(postId);
-		fetchComment();
+		getComments(postId);
 	}, []);
-
-	const fetchComment = async () => {
-		const response = await axios.get(
-			`https://jsonplaceholder.typicode.com/posts/${postId}/comments`
-		);
-		const { data } = await response;
-		setComments(data);
-	};
 
 	if (loading) {
 		return <h1>Loading....</h1>;
 	}
+
 	return (
 		<div className="container mt-5">
 			<h1
@@ -40,15 +32,19 @@ const PostDetail = ({ state, postDetailState, setComments, getPostDetail }) => {
 			</p>
 			<hr />
 			<h2 className="mt-5">Comments</h2>
-			<ul className="mt-3">
-				{comments.map((comment) => (
-					<li key={comment.id}>
-						<p>{comment.email}</p>
-						<p>{comment.body}</p>
-						<hr />
-					</li>
-				))}
-			</ul>
+			{state.loading ? (
+				<p>Loading comments...</p>
+			) : (
+				<ul className="mt-3">
+					{comments.map((comment) => (
+						<li key={comment.id}>
+							<p>{comment.email}</p>
+							<p>{comment.body}</p>
+							<hr />
+						</li>
+					))}
+				</ul>
+			)}
 		</div>
 	);
 };
@@ -63,8 +59,8 @@ const mapDispatchToProps = (dispatch) => ({
 		dispatch(getPostDetail(id));
 	},
 
-	setComments: (comments) => {
-		dispatch(setComments(comments));
+	getComments: (id) => {
+		dispatch(getComments(id));
 	},
 });
 

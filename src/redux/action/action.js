@@ -1,7 +1,7 @@
 import {
 	SET_CURRENT_PAGE,
 	GET_POSTS_REQUESTED,
-	SET_COMMENTS,
+	GET_COMMENTS,
 	GET_USERS_REQUESTED,
 	GET_POST_DETAIL,
 } from "./action-type";
@@ -24,7 +24,7 @@ export const setCurrentPage = (pageNumber) => ({
 	payload: pageNumber,
 });
 
-export const setComments = (comments) => ({
-	type: SET_COMMENTS,
-	payload: comments,
+export const getComments = (id) => ({
+	type: GET_COMMENTS,
+	payload: id,
 });

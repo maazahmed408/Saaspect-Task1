@@ -14,7 +14,6 @@ export default (state = initialState, action) => {
 			return { ...state, loading: false, posts: action.posts };
 		case "GET_POSTS_FAILED":
 			return { ...state, loading: false, error: action.message };
-
 		default:
 			return state;
 	}

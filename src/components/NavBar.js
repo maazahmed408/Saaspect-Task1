@@ -6,11 +6,11 @@ const NavBar = () => {
 		<header className="header sticky-top">
 			<nav className="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
 				<div className="container">
-					<a className="navbar-brand" href="#">
+					<NavLink className="navbar-brand" to="/">
 						<strong className="h6 mb-0 font-weight-bold text-uppercase">
 							Saaspect
 						</strong>
-					</a>
+					</NavLink>
 					<button
 						className="navbar-toggler navbar-toggler-right"
 						type="button"

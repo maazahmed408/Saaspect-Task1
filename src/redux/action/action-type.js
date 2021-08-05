@@ -6,4 +6,4 @@ export const GET_POST_DETAIL = "GET_POST_DETAIL";
 
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 
-export const SET_COMMENTS = "SET_COMMENTS";
+export const GET_COMMENTS = "GET_COMMENTS";
