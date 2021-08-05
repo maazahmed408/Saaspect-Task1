@@ -15,6 +15,9 @@ const AddPost = () => {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
+		if (!details.title || !details.body) {
+			return toast.warning("please provide all info");
+		}
 		sendPost()
 			.then(toast.success("Post Uploaded"))
 			.catch((err) => toast.warning("Post Failded to Upload"));
@@ -26,9 +29,6 @@ const AddPost = () => {
 	};
 
 	const sendPost = () => {
-		if (!details.title || !details.body) {
-			return toast.warning("plzz fill the fields");
-		}
 		return axios.post("https://jsonplaceholder.typicode.com/posts", {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(details),
