@@ -5,6 +5,7 @@ import {
 	SET_POST,
 	SET_COMMENTS,
 	GET_USERS_REQUESTED,
+	GET_POST_DETAIL,
 } from "./action-type";
 
 export const getPosts = () => ({
@@ -13,6 +14,11 @@ export const getPosts = () => ({
 
 export const getUsers = () => ({
 	type: GET_USERS_REQUESTED,
+});
+
+export const getPostDetail = (postId) => ({
+	type: GET_POST_DETAIL,
+	payload: postId,
 });
 
 export const setCurrentPage = (pageNumber) => ({

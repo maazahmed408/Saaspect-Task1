@@ -1,29 +1,20 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { setPost, setLoading, setComments } from "../redux/action/action";
+import { setComments, getPostDetail } from "../redux/action/action";
 
-const PostDetail = ({ setPost, state, setLoading, setComments }) => {
-	const { post, loading, comments } = state;
+const PostDetail = ({ state, postDetailState, setComments, getPostDetail }) => {
+	const { comments } = state;
 	const { postId } = useParams();
+	const { post, loading } = postDetailState;
 
 	useEffect(() => {
-		fetchPost();
+		getPostDetail(postId);
 		fetchComment();
 	}, []);
-
-	const fetchPost = async () => {
-		setLoading(true);
-		const response = await axios.get(
-			`https://jsonplaceholder.typicode.com/posts/${postId}`
-		);
-		const { data } = await response;
-		setPost(data);
-		setLoading(false);
-	};
 
 	const fetchComment = async () => {
 		const response = await axios.get(
@@ -64,17 +55,16 @@ const PostDetail = ({ setPost, state, setLoading, setComments }) => {
 
 const mapStateToProps = (state) => ({
 	state: state.blogReducer,
+	postDetailState: state.postDetailReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	setPost: (post) => {
-		dispatch(setPost(post));
+	getPostDetail: (id) => {
+		dispatch(getPostDetail(id));
 	},
+
 	setComments: (comments) => {
 		dispatch(setComments(comments));
-	},
-	setLoading: (value) => {
-		dispatch(setLoading(value));
 	},
 });
 

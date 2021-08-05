@@ -6,8 +6,6 @@ import { getUsers } from "../redux/action/action";
 const Posts = ({ state, posts, getUsers, usersState }) => {
 	const { loading } = state;
 	const { users } = usersState;
-	// console.log(users.find((user) => user.id === 1).name);
-	console.log(posts);
 
 	useEffect(() => {
 		getUsers();

@@ -8,7 +8,6 @@ import { setLoading, setCurrentPage, getPosts } from "../redux/action/action";
 const BlogPage = ({ setCurrentPage, blogState, getPosts, postsState }) => {
 	const { currentPage, postsPerPage } = blogState;
 	const { posts, loading } = postsState;
-	console.log(postsState);
 
 	useEffect(() => {
 		getPosts();
