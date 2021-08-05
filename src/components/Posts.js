@@ -29,7 +29,7 @@ const Posts = ({ state, posts, getUsers, usersState }) => {
 							: post.body.substring(0, 68)}
 					</p>
 					<p className="font-weight-bold">
-						By : {users.find((user) => user.id === post.userId).name}
+						By : {users.find((user) => user.id === post.userId)?.name}
 					</p>
 				</li>
 			))}
