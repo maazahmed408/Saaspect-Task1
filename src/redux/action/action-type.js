@@ -7,3 +7,5 @@ export const GET_POST_DETAIL = "GET_POST_DETAIL";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 
 export const GET_COMMENTS = "GET_COMMENTS";
+
+export const GET_USER_PROFILE = "GET_USER_PROFILE";

@@ -1,18 +1,33 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { getComments, getPostDetail } from "../redux/action/action";
+import {
+	getComments,
+	getPostDetail,
+	getUserProfile,
+} from "../redux/action/action";
 
-const PostDetail = ({ state, postDetailState, getComments, getPostDetail }) => {
+const PostDetail = ({
+	state,
+	postDetailState,
+	getComments,
+	getPostDetail,
+	userProfileState,
+	getUserProfile,
+}) => {
 	const { comments } = state;
 	const { postId } = useParams();
 	const { post, loading } = postDetailState;
+	const { userProfile } = userProfileState;
+	console.log(userProfile);
 
 	useEffect(() => {
 		getPostDetail(postId);
 		getComments(postId);
+		getUserProfile(post.userId);
 	}, []);
 
 	if (loading) {
@@ -30,6 +45,9 @@ const PostDetail = ({ state, postDetailState, getComments, getPostDetail }) => {
 			<p className="text-center" style={{ fontSize: "24px" }}>
 				{post.body}
 			</p>
+			<NavLink to={`/users/${post.userId}`}>
+				<p>@{userProfile.username}</p>
+			</NavLink>
 			<hr />
 			<h2 className="mt-5">Comments</h2>
 			{state.loading ? (
@@ -40,6 +58,7 @@ const PostDetail = ({ state, postDetailState, getComments, getPostDetail }) => {
 						<li key={comment.id}>
 							<p>{comment.email}</p>
 							<p>{comment.body}</p>
+
 							<hr />
 						</li>
 					))}
@@ -52,6 +71,7 @@ const PostDetail = ({ state, postDetailState, getComments, getPostDetail }) => {
 const mapStateToProps = (state) => ({
 	state: state.blogReducer,
 	postDetailState: state.postDetailReducer,
+	userProfileState: state.userProfileReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -61,6 +81,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 	getComments: (id) => {
 		dispatch(getComments(id));
+	},
+
+	getUserProfile: (id) => {
+		dispatch(getUserProfile(id));
 	},
 });
 

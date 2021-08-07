@@ -4,6 +4,7 @@ import {
 	GET_COMMENTS,
 	GET_USERS_REQUESTED,
 	GET_POST_DETAIL,
+	GET_USER_PROFILE,
 } from "./action-type";
 
 export const getPosts = () => ({
@@ -26,5 +27,10 @@ export const setCurrentPage = (pageNumber) => ({
 
 export const getComments = (id) => ({
 	type: GET_COMMENTS,
+	payload: id,
+});
+
+export const getUserProfile = (id) => ({
+	type: GET_USER_PROFILE,
 	payload: id,
 });

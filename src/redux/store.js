@@ -3,6 +3,7 @@ import createSagaMiddleware from "redux-saga";
 import blogReducer from "./reducers/blogReducer";
 import allPostsReducer from "./reducers/allPostsReducer";
 import usersReducer from "./reducers/usersReducer";
+import userProfileReducer from "./reducers/userProfileReducer";
 import postDetailReducer from "./reducers/postDetailReducer";
 import { watcherSaga } from "../sagas/rootSaga";
 
@@ -11,6 +12,7 @@ const rootReducers = combineReducers({
 	blogReducer,
 	usersReducer,
 	postDetailReducer,
+	userProfileReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();

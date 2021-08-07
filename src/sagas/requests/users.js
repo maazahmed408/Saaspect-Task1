@@ -11,3 +11,14 @@ export const requestGetUsers = () => {
 			throw error;
 		});
 };
+
+export const requestGetUserProfile = (id) => {
+	return axios
+		.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+		.then((response) => {
+			return response.data;
+		})
+		.catch((error) => {
+			throw error;
+		});
+};

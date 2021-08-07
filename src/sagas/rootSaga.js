@@ -4,9 +4,10 @@ import {
 	GET_POST_DETAIL,
 	GET_USERS_REQUESTED,
 	GET_COMMENTS,
+	GET_USER_PROFILE,
 } from "../redux/action/action-type";
 import { handleGetPosts } from "./handlers/postsHandler";
-import { handleGetUsers } from "./handlers/usersHandler";
+import { handleGetUsers, handleGetUserProfile } from "./handlers/usersHandler";
 import { handleGetPostDetail } from "./handlers/postDetailHandler";
 import { handleGetComments } from "./handlers/commentsHandler";
 
@@ -25,6 +26,9 @@ function* postDetailSaga() {
 function* getCommentsSaga() {
 	yield takeEvery(GET_COMMENTS, handleGetComments);
 }
+function* getUserProfileSaga() {
+	yield takeEvery(GET_USER_PROFILE, handleGetUserProfile);
+}
 
 export function* watcherSaga() {
 	yield all([
@@ -32,5 +36,6 @@ export function* watcherSaga() {
 		fork(userSaga),
 		fork(postDetailSaga),
 		fork(getCommentsSaga),
+		fork(getUserProfileSaga),
 	]);
 }
